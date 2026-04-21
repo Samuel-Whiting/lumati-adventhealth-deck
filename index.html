@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lumati × AdventHealth — Longevity Program Partnership</title>
+<meta name="description" content="Lumati Holdings, Inc. — Longevity Program Partnership Proposal for AdventHealth. System-wide infrastructure for whole-person care, beginning with Winter Park as anchor site."/>
+<meta property="og:image" content="investment-deck/logo-color.png"/>
+<link rel="icon" type="image/png" href="investment-deck/logo-color.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06060a;--glass:rgba(255,255,255,.055);--glass-hi:rgba(255,255,255,.09);
+  --border:rgba(255,255,255,.08);--border-hi:rgba(255,255,255,.16);
+  --text:#e2e2ec;--dim:rgba(255,255,255,.65);--bright:#fff;
+  --teal:#4ecdc4;--coral:#ff6b6b;--gold:#fbb45b;--purple:#a78bfa;
+  --head:'Playfair Display',Georgia,serif;--body:'Lato',sans-serif;
+}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-weight:300;
+  line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{display:none}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--head);font-weight:700}
+h1{font-size:clamp(2.4rem,5vw,4.2rem);line-height:1.08;color:var(--bright);font-weight:900}
+h2{font-size:clamp(1.6rem,3.2vw,2.8rem);line-height:1.15;color:var(--bright)}
+h3{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.25;color:var(--bright)}
+
+.slide{width:100vw;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;padding:56px 72px;position:relative;overflow:hidden;scroll-snap-align:start}
+.slide::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 40% at 20% 20%,rgba(78,205,196,.06) 0%,transparent 70%),
+  radial-gradient(ellipse 50% 50% at 80% 80%,rgba(167,139,250,.05) 0%,transparent 70%)}
+
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") repeat;background-size:128px}
+
+canvas#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+.progress{position:fixed;top:0;left:0;height:3px;z-index:300;
+  background:linear-gradient(90deg,var(--teal),var(--purple),var(--gold));transition:width .4s ease;width:0}
+
+.anim{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s ease}
+html.js-on .anim{opacity:0;transform:translateY(32px)}
+html.js-on .anim.visible{opacity:1;transform:translateY(0)}
+.anim.d1{transition-delay:.1s}.anim.d2{transition-delay:.2s}.anim.d3{transition-delay:.3s}.anim.d4{transition-delay:.4s}
+@media print { .anim { opacity:1 !important; transform:none !important; } }
+
+.glass-shimmer{position:relative;overflow:hidden}
+.glass-shimmer::after{content:'';position:absolute;inset:-1px;border-radius:inherit;
+  background:conic-gradient(from var(--shimmer-angle,0deg),transparent 0%,rgba(78,205,196,.15) 10%,transparent 20%,transparent 80%,rgba(167,139,250,.12) 90%,transparent 100%);
+  z-index:-1;animation:shimmer 6s linear infinite;opacity:0;transition:opacity .5s}
+.glass-shimmer:hover::after{opacity:1}
+@keyframes shimmer{to{--shimmer-angle:360deg}}
+@property --shimmer-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:3.5px;font-weight:700;color:var(--teal);margin-bottom:16px}
+.sub{font-size:clamp(.9rem,1.3vw,1.1rem);color:var(--dim);line-height:1.7;max-width:780px;text-align:center;font-weight:300;margin-bottom:32px}
+.grad-text{background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.divider{width:60px;height:2px;background:linear-gradient(90deg,var(--teal),var(--purple));margin:20px auto;border-radius:2px}
+
+.glass{background:var(--glass);border:1px solid var(--border);border-radius:20px;
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:28px;
+  transition:transform .35s,border-color .35s,box-shadow .35s}
+.glass:hover{transform:translateY(-3px);border-color:var(--border-hi);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:1100px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%;max-width:1100px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;width:100%;max-width:1100px}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;width:100%;max-width:1100px}
+.center{text-align:center}
+
+.sv{font-family:var(--head);font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:900;line-height:1}
+.sl{font-size:13px;color:var(--dim);line-height:1.5;margin-top:8px}
+.ss{font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:.5px}
+
+.pcard{border-radius:16px;overflow:hidden;position:relative;box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.pcard img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.15) saturate(1.1);
+  transition:filter .5s,transform .5s}
+.pcard:hover img{filter:brightness(.65) contrast(1.1) saturate(1.1);transform:scale(1.03)}
+.pcard .cap{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,6,10,.92) 0%,rgba(6,6,10,.2) 50%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:16px 18px}
+.cap h3{font-size:15px;margin-bottom:4px}
+.cap p{font-size:12px;color:var(--dim);line-height:1.5}
+
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:10px;
+  letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--bright)}
+.card-text{font-size:13.5px;color:var(--dim);line-height:1.6}
+
+.mod-num{font-size:32px;font-weight:900;font-family:var(--head);color:var(--teal);opacity:.4;margin-bottom:0}
+
+.step-row{display:flex;gap:24px;align-items:flex-start;margin-bottom:20px}
+.step-num{width:44px;height:44px;min-width:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;background:rgba(78,205,196,.12);border:1px solid rgba(78,205,196,.3);color:var(--teal)}
+
+.kpi-strip{display:flex;gap:32px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.kpi-item{text-align:center}
+.kpi-val{font-size:22px;font-weight:900;font-family:var(--head)}
+.kpi-label{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+.quote-block{border-left:3px solid var(--teal);padding:18px 28px;font-style:italic;
+  color:var(--dim);font-size:15px;max-width:880px;margin-top:28px;line-height:1.7}
+
+.slide-footer{position:absolute;bottom:24px;left:72px;right:72px;display:flex;align-items:center;justify-content:space-between}
+.slide-footer img{height:42px;opacity:.4;filter:drop-shadow(0 0 12px rgba(78,205,196,.3))}
+.slide-footer .num{font-size:12px;color:rgba(255,255,255,.3);letter-spacing:2px}
+.slide-footer .conf{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:1px;text-transform:uppercase}
+
+.nav-dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:100}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:all .3s}
+.nav-dot:hover,.nav-dot.active{background:var(--teal);transform:scale(1.3)}
+
+@media(max-width:768px){
+  .slide{padding:40px 24px}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .slide-footer{left:24px;right:24px}
+}
+
+@page { size: 13.333in 7.5in; margin: 0; }
+@media print {
+  html, body { width: 13.333in; height: 7.5in; margin: 0; padding: 0; background: var(--bg) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { overflow: visible !important; }
+  .slide { width: 13.333in !important; min-height: 7.5in !important; height: 7.5in !important; max-height: 7.5in !important; padding: 36px 60px !important; page-break-after: always; scroll-snap-align: none; overflow: hidden !important; }
+  .slide:last-child { page-break-after: auto; }
+  .slide-footer { left: 60px !important; right: 60px !important; bottom: 16px !important; position: absolute !important; }
+  canvas#particles, .nav-dots, .progress, .grain { display: none !important; }
+  .anim, .anim.visible, .anim.d1, .anim.d2, .anim.d3, .anim.d4 { opacity: 1 !important; transform: none !important; transition: none !important; }
+  /* Force grid layouts (Chrome print can fall back on repeat()) */
+  .grid-2 { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; max-width: 1100px !important; }
+  .grid-3 { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 18px !important; max-width: 1100px !important; }
+  .grid-4 { display: grid !important; grid-template-columns: 1fr 1fr 1fr 1fr !important; gap: 16px !important; max-width: 1100px !important; }
+  /* Type scaling for print fit */
+  h1 { font-size: 3rem !important; line-height: 1.08 !important; }
+  h2 { font-size: 1.9rem !important; line-height: 1.18 !important; }
+  h3 { font-size: 1rem !important; line-height: 1.25 !important; }
+  .sub { font-size: 12.5px !important; line-height: 1.55 !important; max-width: 760px !important; margin-bottom: 18px !important; }
+  .tag { margin-bottom: 12px !important; font-size: 10.5px !important; letter-spacing: 3px !important; }
+  .quote-block { padding: 12px 22px !important; font-size: 12.5px !important; margin-top: 14px !important; line-height: 1.5 !important; }
+  .glass { padding: 16px 18px !important; }
+  .card-text { font-size: 12px !important; line-height: 1.5 !important; }
+  .card-title { font-size: 14px !important; margin-bottom: 6px !important; }
+  .badge { font-size: 9.5px !important; padding: 3px 10px !important; margin-bottom: 8px !important; }
+  .sv { font-size: 1.8rem !important; }
+  .sl { font-size: 11.5px !important; margin-top: 5px !important; }
+  .ss { font-size: 10px !important; }
+  .kpi-strip { gap: 24px !important; margin-top: 16px !important; }
+  .kpi-val { font-size: 18px !important; }
+  .kpi-label { font-size: 10px !important; }
+  .mod-num { font-size: 22px !important; }
+  /* Cover slide image needs to be brighter in print since particles are disabled */
+  #s1 img[alt="Recharge Portal"] { filter: brightness(.5) contrast(1.05) !important; }
+  /* S5 Recharge Portal — keep image scaled so headline + 5 mod cards fit */
+  #s5 .pcard { min-height: 280px !important; max-height: 320px !important; flex: 1 !important; }
+  #s5 .pcard .cap h3 { font-size: 13.5px !important; }
+  #s5 .glass { padding: 11px 14px !important; }
+  #s5 .mod-num { font-size: 18px !important; min-width: 30px !important; }
+  /* S9 — keep step labels readable */
+  #s9 .glass { padding: 18px 16px !important; }
+  /* S10/S11 quote-block tighter */
+  #s10 .quote-block, #s11 .quote-block { font-size: 12px !important; padding: 10px 18px !important; }
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<canvas id="particles"></canvas>
+<div class="progress" id="progress"></div>
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ========== S1: COVER ========== -->
+<section class="slide" id="s1">
+  <div style="position:absolute;inset:0;z-index:-1">
+    <img src="investment-deck/img/crop/cover_recharge.jpg" alt="Recharge Portal" style="width:100%;height:100%;object-fit:cover;filter:brightness(.28) contrast(1.1)"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,6,10,.75) 0%,rgba(6,6,10,.55) 50%,rgba(6,6,10,.85) 100%)"></div>
+  </div>
+  <div style="text-align:center;max-width:960px;z-index:2;position:relative">
+    <img src="investment-deck/logo-color.png" alt="Lumati" class="anim" style="width:160px;margin-bottom:28px;filter:drop-shadow(0 0 16px rgba(78,205,196,.5))"/>
+    <div class="tag anim d1" style="margin-bottom:20px">Lumati Holdings &times; AdventHealth</div>
+    <h1 class="anim d2" style="font-size:clamp(2.4rem,5vw,4rem);margin-bottom:16px">
+      The Longevity Layer<br>
+      <span class="grad-text">for AdventHealth.</span>
+    </h1>
+    <div class="divider"></div>
+    <p class="sub" style="margin-top:16px">
+      A system partnership proposal to bring replicable, clinically grounded longevity infrastructure<br>
+      to the next chapter of whole-person care &mdash; beginning with Winter Park as the natural anchor site.
+    </p>
+    <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:16px;letter-spacing:2px">APRIL 2026 &middot; CONFIDENTIAL</p>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">01 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S2: THE SHIFT ========== -->
+<section class="slide" id="s2">
+  <div class="tag">The Category Is Arriving</div>
+  <h2 style="text-align:center;margin-bottom:12px">Longevity Is <span style="color:var(--coral)">Leaving The Boutique Clinic</span><br>And Entering The Health System.</h2>
+  <p class="sub">
+    The leading academic medical centers have already moved. The window for differentiation is open &mdash; but it is closing fast. AdventHealth has the scale, the mission, and the patient base to lead this category.
+  </p>
+  <div class="grid-3" style="margin-top:8px">
+    <div class="glass glass-shimmer anim">
+      <div class="badge" style="background:rgba(167,139,250,.15);color:var(--purple)">Cleveland Clinic</div>
+      <div class="card-title">Global Peak Performance Center</div>
+      <div class="card-text">210,000 sq ft facility opens 2027. Public-plus-athlete longevity. PGA Tour official health partner through 2032.</div>
+    </div>
+    <div class="glass glass-shimmer anim d1">
+      <div class="badge" style="background:rgba(78,205,196,.15);color:var(--teal)">Mayo Clinic</div>
+      <div class="card-title">Longevity Arm · Rochester</div>
+      <div class="card-text">Senolytics and microbiome trials. Published 22% frailty-index reduction. Positioning as the evidence-driven standard.</div>
+    </div>
+    <div class="glass glass-shimmer anim d2">
+      <div class="badge" style="background:rgba(251,180,91,.15);color:var(--gold)">The Market</div>
+      <div class="card-title">Niche &rarr; Mainstream</div>
+      <div class="card-text">Longevity technology is shifting from boutique wellness into the hospital and academic-medical mainstream in 2026.</div>
+    </div>
+  </div>
+  <div class="quote-block center" style="text-align:center">
+    The question isn't whether health systems will own this category.<br>It is <strong style="color:var(--bright)">who launches first</strong> &mdash; and how.
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">02 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S3: AH IS ALREADY BUILDING ========== -->
+<section class="slide" id="s3">
+  <div class="tag">Our Read</div>
+  <h2 style="text-align:center;margin-bottom:12px">AdventHealth Is <span class="grad-text">Already Building It.</span></h2>
+  <p class="sub">
+    Across the system, the infrastructure, the strategy, and the patient base are already in place. What's missing is the operating longevity program inside them &mdash; and that is exactly what Lumati builds. Winter Park is the natural first site; the opportunity is system-wide.
+  </p>
+  <div class="grid-4" style="margin-top:8px">
+    <div class="glass anim">
+      <div class="badge" style="background:rgba(78,205,196,.15);color:var(--teal)">Winter Park</div>
+      <div class="card-title">Center for Health &amp; Wellbeing</div>
+      <div class="card-text">80,000 sq ft facility designed to reverse chronic disease and increase longevity. The natural anchor site for a system-wide program.</div>
+    </div>
+    <div class="glass anim d1">
+      <div class="badge" style="background:rgba(167,139,250,.15);color:var(--purple)">Overland Park</div>
+      <div class="card-title">Whole Health Institute</div>
+      <div class="card-text">Integrative and functional medicine model already proven at clinic scale. Root-cause framework in market.</div>
+    </div>
+    <div class="glass anim d2">
+      <div class="badge" style="background:rgba(251,180,91,.15);color:var(--gold)">System-Wide</div>
+      <div class="card-title">AdventHealth Well 65+</div>
+      <div class="card-text">Whole-person primary care aimed at the exact cohort that drives longevity demand. Mind, body, spirit framing in-brand.</div>
+    </div>
+    <div class="glass anim d3">
+      <div class="badge" style="background:rgba(255,107,107,.15);color:var(--coral)">Corporate</div>
+      <div class="card-title">System Mandate</div>
+      <div class="card-text">"Strengthening care across the full continuum &mdash; not just acute care, but wellness and prevention." System CEO directive, 2025.</div>
+    </div>
+  </div>
+  <div class="quote-block center" style="text-align:center">
+    You already have the building, the strategy, and the patient base.<br>
+    We bring the <strong style="color:var(--bright)">operating program</strong> that lives inside them.
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">03 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S4: INTRODUCING LUMATI ========== -->
+<section class="slide" id="s4">
+  <div style="display:flex;gap:48px;align-items:center;max-width:1100px;width:100%">
+    <div style="flex:1">
+      <div class="tag">Introducing Lumati</div>
+      <h2 style="margin-bottom:16px">Next-Generation Longevity.<br><span class="grad-text">Built To Operate Inside Health Systems.</span></h2>
+      <p style="font-size:15px;color:var(--dim);line-height:1.7;margin-bottom:20px">
+        Lumati Holdings, Inc. is a longevity and cellular-health company. Our hardware, protocols, and platform are operating today &mdash; clinically inside our Encinitas flagship, and commercially inside premium hospitality (Hyatt-approved, live at Alila Marea and La Valle Coastal Club).
+      </p>
+      <div class="glass" style="border-color:rgba(78,205,196,.2);padding:18px 22px;margin-bottom:16px">
+        <p style="font-size:14px;color:var(--teal)">
+          <strong style="color:var(--bright)">Mission:</strong> Positively impact <strong style="color:var(--bright)">1 billion lives</strong> by 2035 &mdash; through embedded longevity infrastructure across hospitality and health systems.
+        </p>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,.35)">Founded by David Perez &middot; Headquartered in Encinitas, California</p>
+    </div>
+    <div style="flex:.9;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="pcard" style="aspect-ratio:1/1">
+        <img loading="lazy" src="investment-deck/img/crop/read_nls_laptop.jpg" alt="Clinical Diagnostics"/>
+        <div class="cap"><h3>Clinically Grounded</h3><p>Every modality backed by peer-reviewed science</p></div>
+      </div>
+      <div class="pcard" style="aspect-ratio:1/1">
+        <img loading="lazy" src="investment-deck/img/crop/lifestyle_portal_session.jpg" alt="Portal Session"/>
+        <div class="cap"><h3>Hospital-Native</h3><p>Durability + aesthetics for clinical environments</p></div>
+      </div>
+      <div class="pcard" style="aspect-ratio:1/1">
+        <img loading="lazy" src="investment-deck/img/crop/recharge_pod_red.jpg" alt="Recharge Pod"/>
+        <div class="cap"><h3>Revenue-Positive</h3><p>New service category with measurable outcomes</p></div>
+      </div>
+      <div class="pcard" style="aspect-ratio:1/1">
+        <img loading="lazy" src="investment-deck/img/crop/supp_stack.jpg" alt="Supplements"/>
+        <div class="cap"><h3>Mission-Driven</h3><p>1 billion lives through system-level reach</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">04 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S5: RECHARGE PORTAL ========== -->
+<section class="slide" id="s5">
+  <div class="tag">The Anchor Experience</div>
+  <h2 style="text-align:center;margin-bottom:8px">The <span class="grad-text">Recharge Portal.</span></h2>
+  <p class="sub" style="margin-bottom:24px">
+    Five clinically grounded therapies. One immersive 15-minute session.<br>The unit that anchors a longevity program inside your facility.
+  </p>
+  <div style="display:flex;gap:32px;max-width:1100px;width:100%;align-items:stretch">
+    <div class="pcard" style="flex:1.1;min-height:380px;flex-shrink:0">
+      <img loading="lazy" src="investment-deck/img/crop/feed_portal_room.jpg" alt="Recharge Portal" style="object-position:center 40%"/>
+      <div class="cap" style="padding:24px">
+        <h3 style="font-size:18px">&ldquo;One 15-minute session. Five clinical modalities. A program patients will book, measure, and return for.&rdquo;</h3>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+      <div class="glass" style="padding:14px 18px;display:flex;gap:12px;align-items:center">
+        <div class="mod-num" style="min-width:40px">01</div>
+        <div><div class="card-title" style="font-size:13.5px">Red Light Therapy</div>
+        <div class="card-text" style="font-size:11.5px">FDA Class II &middot; 10 wavelengths &middot; cellular repair &amp; tissue regeneration</div></div>
+      </div>
+      <div class="glass" style="padding:14px 18px;display:flex;gap:12px;align-items:center">
+        <div class="mod-num" style="min-width:40px">02</div>
+        <div><div class="card-title" style="font-size:13.5px">Molecular Hydrogen</div>
+        <div class="card-text" style="font-size:11.5px">99.9% purity inhalation &middot; H2 Analytics certified &middot; MHI partnership</div></div>
+      </div>
+      <div class="glass" style="padding:14px 18px;display:flex;gap:12px;align-items:center">
+        <div class="mod-num" style="min-width:40px">03</div>
+        <div><div class="card-title" style="font-size:13.5px">Micro-Impact Vibration</div>
+        <div class="card-text" style="font-size:11.5px">Circulation &amp; lymphatic drainage &middot; recovery acceleration</div></div>
+      </div>
+      <div class="glass" style="padding:14px 18px;display:flex;gap:12px;align-items:center;border-color:rgba(78,205,196,.25)">
+        <div class="mod-num" style="min-width:40px">04</div>
+        <div><div class="card-title" style="font-size:13.5px">Vagus Nerve Stimulation</div>
+        <div class="card-text" style="font-size:11.5px">Parasympathetic activation &middot; aligns with AH 2026&ndash;28 mental-health priorities</div></div>
+      </div>
+      <div class="glass" style="padding:14px 18px;display:flex;gap:12px;align-items:center">
+        <div class="mod-num" style="min-width:40px">05</div>
+        <div><div class="card-title" style="font-size:13.5px">Sound Therapy</div>
+        <div class="card-text" style="font-size:11.5px">Resonance frequencies &middot; deepens session outcomes &amp; retention</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">05 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S6: TECHNOLOGY SUITE ========== -->
+<section class="slide" id="s6">
+  <div class="tag">The Lumati Technology Suite</div>
+  <h2 style="text-align:center;margin-bottom:8px">A Complete Longevity Stack <span style="color:var(--gold)">&mdash; Modular For Hospital Deployment.</span></h2>
+  <p class="sub" style="margin-bottom:20px">Every unit is standalone-deployable. Every program is modular. Build the program around the anchor site, then extend into the system.</p>
+  <div class="grid-3" style="margin-top:4px">
+    <div class="glass" style="overflow:hidden;padding:0">
+      <div class="pcard" style="aspect-ratio:16/9;border-radius:0">
+        <img loading="lazy" src="investment-deck/img/crop/feed_portal_room.jpg" alt="Recharge Portal" style="object-position:center 40%"/>
+      </div>
+      <div style="padding:18px 22px">
+        <div class="badge" style="background:rgba(78,205,196,.15);color:var(--teal)">FLAGSHIP</div>
+        <div class="card-title">Recharge Portal</div>
+        <div class="card-text">Anchor unit. Five modalities, one immersive 15-minute session. Measurable outcomes.</div>
+        <p style="font-size:11px;color:var(--teal);margin-top:8px">FDA Class II &middot; Hospital-grade build</p>
+      </div>
+    </div>
+    <div class="glass" style="overflow:hidden;padding:0">
+      <div class="pcard" style="aspect-ratio:16/9;border-radius:0">
+        <img loading="lazy" src="investment-deck/img/crop/lifestyle_redlight_woman.png" alt="Red Light+"/>
+      </div>
+      <div style="padding:18px 22px">
+        <div class="badge" style="background:rgba(251,180,91,.15);color:var(--gold)">COMMERCIAL GRADE</div>
+        <div class="card-title">Red Light+ Program</div>
+        <div class="card-text">LG10 / Pro10 light beds. Precision red + near-infrared. Built for high-throughput clinical environments.</div>
+        <p style="font-size:11px;color:var(--gold);margin-top:8px">FDA-cleared &middot; Light Lab International tested</p>
+      </div>
+    </div>
+    <div class="glass" style="overflow:hidden;padding:0">
+      <div class="pcard" style="aspect-ratio:16/9;border-radius:0">
+        <img loading="lazy" src="investment-deck/img/crop/read_scanning.png" alt="Diagnostics"/>
+      </div>
+      <div style="padding:18px 22px">
+        <div class="badge" style="background:rgba(167,139,250,.15);color:var(--purple)">DIAGNOSTICS</div>
+        <div class="card-title">Assessment Layer</div>
+        <div class="card-text">NLS BioResonance, Oligoscan mineral analysis, microplastic detection. Deepens the patient journey with measurable baselines.</div>
+        <p style="font-size:11px;color:var(--purple);margin-top:8px">ISO 17025-accredited &middot; CLIA-certified lab</p>
+      </div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:18px">
+    <div class="glass" style="display:flex;gap:20px;align-items:center;overflow:hidden">
+      <div class="pcard" style="width:130px;min-width:130px;aspect-ratio:1/1;border-radius:12px;flex-shrink:0">
+        <img loading="lazy" src="investment-deck/img/crop/supp_stack.jpg" alt="Supplements"/>
+      </div>
+      <div>
+        <div class="badge" style="background:rgba(255,107,107,.15);color:var(--coral)">RETAIL + CLINIC</div>
+        <div class="card-title">Lumati Hydrate Line</div>
+        <div class="card-text">Red, Green, Gold. Clinic dispense, retail extension, ecomm continuity after discharge. Recurring revenue layer for the program.</div>
+      </div>
+    </div>
+    <div class="glass" style="display:flex;gap:20px;align-items:center;overflow:hidden">
+      <div class="pcard" style="width:130px;min-width:130px;aspect-ratio:1/1;border-radius:12px;flex-shrink:0">
+        <img loading="lazy" src="investment-deck/img/crop/app_modalities_hd.png" alt="Education Layer"/>
+      </div>
+      <div>
+        <div class="badge" style="background:rgba(78,205,196,.15);color:var(--teal)">PROGRAM</div>
+        <div class="card-title">Education Layer</div>
+        <div class="card-text">Staff certification, provider training, patient onboarding curriculum, ongoing content library. The program around the hardware.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">06 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S7: PLATFORM ========== -->
+<section class="slide" id="s7">
+  <div class="tag">The Lumati Platform</div>
+  <h2 style="text-align:center;margin-bottom:8px">Beyond Hardware &mdash; <span class="grad-text">A Platform Patients And Staff Actually Use.</span></h2>
+  <p class="sub">Integrated digital layer delivering personalized journeys, real-time analytics, and AI-driven patient engagement. Aligns with AdventHealth's inaugural Chief AI Officer mandate.</p>
+  <div style="display:flex;gap:32px;max-width:1100px;width:100%;align-items:stretch">
+    <div style="flex:.7;display:flex;gap:12px;align-items:center;justify-content:center">
+      <div style="width:120px;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);border:1px solid var(--border)">
+        <img loading="lazy" src="investment-deck/img/crop/phone_modalities.jpg" alt="Modalities"/>
+      </div>
+      <div style="width:120px;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);border:1px solid var(--border);margin-top:-24px">
+        <img loading="lazy" src="investment-deck/img/crop/phone_insights.png" alt="Insights"/>
+      </div>
+      <div style="width:120px;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);border:1px solid var(--border)">
+        <img loading="lazy" src="investment-deck/img/crop/phone_stack.png" alt="Stack"/>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+      <div class="glass" style="padding:20px 24px">
+        <div class="card-title" style="color:var(--teal)">AI Wellness Advisor (Lumi)</div>
+        <div class="card-text">Voice + chat concierge, co-brandable with AdventHealth identity. Guides patients from intake through post-session recommendations &mdash; complementing the kind of AI-native infrastructure AdventHealth signaled with its 2025 Chief AI Officer appointment.</div>
+      </div>
+      <div class="glass" style="padding:20px 24px">
+        <div class="card-title" style="color:var(--gold)">Provider &amp; Program Analytics</div>
+        <div class="card-text">Real-time dashboards for program directors: session utilization, outcomes tracking, revenue per unit, patient satisfaction, cross-site benchmarking. EMR-friendly export.</div>
+      </div>
+      <div class="glass" style="padding:20px 24px">
+        <div class="card-title" style="color:var(--purple)">Patient Digital Journey</div>
+        <div class="card-text">Biometric data, scan results, and personalized recommendations delivered to the patient's device &mdash; extending engagement well beyond the session window.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">07 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S8: PROVEN ========== -->
+<section class="slide" id="s8">
+  <div class="tag">Proven In The Field</div>
+  <h2 style="text-align:center;margin-bottom:8px">Operating Today. <span style="color:var(--gold)">Not A Pilot Pitch.</span></h2>
+  <p class="sub">Lumati's infrastructure is live, approved, and generating real outcomes at leading properties &mdash; with full clinical backbone at our Encinitas flagship.</p>
+  <div class="grid-3" style="max-width:1100px">
+    <div class="glass" style="overflow:hidden;padding:0">
+      <div class="pcard" style="aspect-ratio:16/10;border-radius:0">
+        <img loading="lazy" src="investment-deck/img/crop/resort_alila_exterior.avif" alt="Alila Marea Beach Resort"/>
+      </div>
+      <div style="padding:18px 22px">
+        <div class="badge" style="background:rgba(251,180,91,.2);color:var(--gold)">LIVE &middot; HYATT</div>
+        <div class="card-title">Alila Marea Beach Resort</div>
+        <div class="card-text">Full Recharge Portal deployment. Spa integration. Active guest sessions, measurable outcomes, repeat bookings.</div>
+      </div>
+    </div>
+    <div class="glass" style="overflow:hidden;padding:0">
+      <div class="pcard" style="aspect-ratio:16/10;border-radius:0">
+        <img loading="lazy" src="investment-deck/img/crop/resort_lavalle_wellness.jpg" alt="La Valle Coastal Club"/>
+      </div>
+      <div style="padding:18px 22px">
+        <div class="badge" style="background:rgba(78,205,196,.2);color:var(--teal)">LIVE &middot; HYATT</div>
+        <div class="card-title">La Valle Coastal Club</div>
+        <div class="card-text">Premium longevity wellness center running the full Lumati suite. Our flagship hospitality deployment model.</div>
+      </div>
+    </div>
+    <div class="glass" style="overflow:hidden;padding:0">
+      <div class="pcard" style="aspect-ratio:16/10;border-radius:0">
+        <img loading="lazy" src="investment-deck/img/crop/resort_alila_portal.jpg" alt="Lumati Encinitas Flagship"/>
+      </div>
+      <div style="padding:18px 22px">
+        <div class="badge" style="background:rgba(167,139,250,.2);color:var(--purple)">FLAGSHIP CLINIC</div>
+        <div class="card-title">Encinitas, California</div>
+        <div class="card-text">Lumati's own clinical facility. Full technology suite, treatment protocols, and training center &mdash; open to partner leadership site visits.</div>
+      </div>
+    </div>
+  </div>
+  <div class="glass" style="max-width:1100px;margin-top:18px;text-align:center;border-color:rgba(167,139,250,.15);padding:18px 28px">
+    <p style="font-size:14px;color:var(--dim)">
+      <strong style="color:var(--bright)">Hyatt Global Approval</strong> across all properties with spa and fitness facilities. &nbsp;&middot;&nbsp;
+      <strong style="color:var(--bright)">Earned media:</strong> Fitt Insider, Spa Business, Longevity.Technology, Yahoo Finance.
+    </p>
+  </div>
+  <div class="quote-block center" style="text-align:center">
+    The question is not whether the technology works. The question is<br><strong style="color:var(--bright)">how fast we can bring it inside AdventHealth.</strong>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">08 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S9: DEPLOYMENT MODEL ========== -->
+<section class="slide" id="s9">
+  <div class="tag">How A System Rollout Actually Works</div>
+  <h2 style="text-align:center;margin-bottom:12px">Winter Park Anchor &rarr; MSA &rarr; <span class="grad-text">System-Wide Template.</span></h2>
+  <p class="sub">A system program, paced to your governance. Winter Park is the natural first site &mdash; then the template extends across AdventHealth's hospital network. Hospital decision cycles are 6&ndash;12 months for pilot-to-MSA; our build pacing respects that.</p>
+  <div class="grid-4" style="margin-top:8px">
+    <div class="glass" style="padding:22px 20px;position:relative">
+      <div style="position:absolute;top:-14px;left:20px;background:var(--teal);color:var(--bg);font-size:11px;font-weight:900;padding:5px 12px;border-radius:20px;letter-spacing:1.5px">STEP 1</div>
+      <div class="card-title" style="margin-top:6px;color:var(--teal)">Anchor Site (90 Days)</div>
+      <div class="card-text" style="font-size:12.5px">Winter Park Center for Health &amp; Wellbeing. Single Recharge Portal + LG10 Red Light Bed + Lumati App + staff training program. First patient cohort live.</div>
+    </div>
+    <div class="glass" style="padding:22px 20px;position:relative">
+      <div style="position:absolute;top:-14px;left:20px;background:var(--gold);color:var(--bg);font-size:11px;font-weight:900;padding:5px 12px;border-radius:20px;letter-spacing:1.5px">STEP 2</div>
+      <div class="card-title" style="margin-top:6px;color:var(--gold)">MSA + Outcomes (Months 3&ndash;9)</div>
+      <div class="card-text" style="font-size:12.5px">Master Services Agreement. Utilization + clinical outcome data. Program branding, SOPs, billing model locked. Patient retention metrics surfaced.</div>
+    </div>
+    <div class="glass" style="padding:22px 20px;position:relative">
+      <div style="position:absolute;top:-14px;left:20px;background:var(--purple);color:var(--bg);font-size:11px;font-weight:900;padding:5px 12px;border-radius:20px;letter-spacing:1.5px">STEP 3</div>
+      <div class="card-title" style="margin-top:6px;color:var(--purple)">System Template (Months 9&ndash;18)</div>
+      <div class="card-text" style="font-size:12.5px">Replicable build-spec, training curriculum, capital model for next 2&ndash;4 hospitals. The AdventHealth longevity program playbook.</div>
+    </div>
+    <div class="glass" style="padding:22px 20px;position:relative">
+      <div style="position:absolute;top:-14px;left:20px;background:var(--coral);color:var(--bg);font-size:11px;font-weight:900;padding:5px 12px;border-radius:20px;letter-spacing:1.5px">STEP 4</div>
+      <div class="card-title" style="margin-top:6px;color:var(--coral)">System Network (Year 2+)</div>
+      <div class="card-text" style="font-size:12.5px">System-wide longevity program. AdventHealth-branded, Lumati-powered. The system answer to Cleveland Clinic Peak Performance and Mayo's longevity arm.</div>
+    </div>
+  </div>
+  <div class="kpi-strip">
+    <div class="kpi-item"><div class="kpi-val" style="color:var(--teal)">90 Days</div><div class="kpi-label">Anchor To Live</div></div>
+    <div class="kpi-item"><div class="kpi-val" style="color:var(--gold)">12 Months</div><div class="kpi-label">To Replicable Template</div></div>
+    <div class="kpi-item"><div class="kpi-val" style="color:var(--purple)">Year 2+</div><div class="kpi-label">System Network</div></div>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">09 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S10: STOMP RESEARCH TEASE ========== -->
+<section class="slide" id="s10">
+  <div class="tag">The Next Layer &mdash; If There's Appetite</div>
+  <h2 style="text-align:center;margin-bottom:12px">Federally-Funded Research. <span class="grad-text">Published Evidence. AdventHealth As A Partner Site.</span></h2>
+  <p class="sub">Lumati is pursuing an ARPA-H research grant focused on microplastic and nanoplastic detection and intervention protocols, with a clinical pathway to peer-reviewed publication. If the geometry fits, AdventHealth participates at a different altitude than infrastructure-partner alone.</p>
+  <div class="grid-3" style="margin-top:4px">
+    <div class="glass glass-shimmer anim">
+      <div class="badge" style="background:rgba(78,205,196,.15);color:var(--teal)">NON-DILUTIVE</div>
+      <div class="card-title">Federal Funding</div>
+      <div class="card-text">Non-dilutive research capital flows through the program &mdash; not borrowed against AdventHealth balance sheet or ours.</div>
+    </div>
+    <div class="glass glass-shimmer anim d1">
+      <div class="badge" style="background:rgba(167,139,250,.15);color:var(--purple)">PEER-REVIEWED</div>
+      <div class="card-title">Published Evidence</div>
+      <div class="card-text">Clinical pathway to peer-reviewed publication builds scientific credibility for the AdventHealth longevity brand in the category.</div>
+    </div>
+    <div class="glass glass-shimmer anim d2">
+      <div class="badge" style="background:rgba(251,180,91,.15);color:var(--gold)">OPTIONAL</div>
+      <div class="card-title">Clinical Site Partner</div>
+      <div class="card-text">AdventHealth as enrollment + biomarker collection site. Strengthens federal submission; grants program participants research-grade framing.</div>
+    </div>
+  </div>
+  <div class="quote-block center" style="text-align:center;max-width:900px">
+    Solution Summary due 2026&ndash;05&ndash;06. Full Proposal due 2026&ndash;06&ndash;22.<br>
+    We'd explore this at depth in a second conversation &mdash; only if the core program fit lands first.
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">10 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S11: WHY LUMATI / WHY NOW ========== -->
+<section class="slide" id="s11">
+  <div class="tag">What You'd Be Choosing</div>
+  <h2 style="text-align:center;margin-bottom:12px">Why Lumati. <span class="grad-text">Why Now.</span></h2>
+  <div class="grid-2" style="margin-top:12px">
+    <div class="glass" style="padding:26px">
+      <div class="card-title" style="color:var(--teal);font-size:17px">Operating &mdash; Not Promising</div>
+      <div class="card-text" style="font-size:13.5px">Hyatt-deployed across premium properties. Clinical operations running at our Encinitas flagship. Revenue operating today &mdash; you're not underwriting development risk.</div>
+    </div>
+    <div class="glass" style="padding:26px">
+      <div class="card-title" style="color:var(--gold);font-size:17px">FDA-Cleared Core</div>
+      <div class="card-text" style="font-size:13.5px">Red Light+ FDA-cleared &middot; Light Lab International tested &middot; H2 devices H2 Analytics certified &middot; Molecular Hydrogen Institute partnership. The regulatory floor is under the hardware before it arrives at your loading dock.</div>
+    </div>
+    <div class="glass" style="padding:26px">
+      <div class="card-title" style="color:var(--purple);font-size:17px">Made In The USA</div>
+      <div class="card-text" style="font-size:13.5px">Hardware manufactured in Pennsylvania by our Spectra partnership. US service, US warranty, US supply chain &mdash; not the China-sourced consumer-grade category that dominates wellness retail.</div>
+    </div>
+    <div class="glass" style="padding:26px">
+      <div class="card-title" style="color:var(--coral);font-size:17px">Speed To Program</div>
+      <div class="card-text" style="font-size:13.5px">Anchor site live in 90 days. Not a 24-month build-out. Cleveland Clinic opens Peak Performance in 2027. AdventHealth can have a system-branded longevity program running through Winter Park in 2026 &mdash; with the template ready to extend.</div>
+    </div>
+  </div>
+  <div class="quote-block center" style="text-align:center;max-width:920px;border-left-color:var(--gold)">
+    The category is arriving. The patients know. The window for differentiation is open.<br><strong style="color:var(--bright)">Lumati is the fastest credible way for AdventHealth to stand up a program inside it.</strong>
+  </div>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">11 / 12</span>
+  </div>
+</section>
+
+<!-- ========== S12: NEXT STEPS ========== -->
+<section class="slide" id="s12">
+  <div class="tag">The Path From This Conversation</div>
+  <h2 style="text-align:center;margin-bottom:16px">Partnership Pathway. <span class="grad-text">Proposed Next Steps.</span></h2>
+  <div class="grid-3" style="margin-top:4px">
+    <div class="glass" style="padding:26px;position:relative">
+      <div style="position:absolute;top:-14px;left:24px;background:var(--teal);color:var(--bg);font-size:11px;font-weight:900;padding:5px 12px;border-radius:20px;letter-spacing:1.5px">STEP 1 &middot; NEXT 30 DAYS</div>
+      <div class="card-title" style="margin-top:6px;font-size:17px">Encinitas Site Visit</div>
+      <div class="card-text" style="font-size:13.5px">Winter Park leadership tours our flagship clinic, meets the team, and experiences a Recharge Portal session. The fastest way to move from slides to conviction.</div>
+    </div>
+    <div class="glass" style="padding:26px;position:relative">
+      <div style="position:absolute;top:-14px;left:24px;background:var(--gold);color:var(--bg);font-size:11px;font-weight:900;padding:5px 12px;border-radius:20px;letter-spacing:1.5px">STEP 2 &middot; DAYS 30-60</div>
+      <div class="card-title" style="margin-top:6px;font-size:17px">Anchor Site Scoping</div>
+      <div class="card-text" style="font-size:13.5px">Lumati, AH operations, and AH finance scope the Center for Health &amp; Wellbeing pilot. Capital model. Revenue model. Outcomes framework. Program branding.</div>
+    </div>
+    <div class="glass" style="padding:26px;position:relative">
+      <div style="position:absolute;top:-14px;left:24px;background:var(--purple);color:var(--bg);font-size:11px;font-weight:900;padding:5px 12px;border-radius:20px;letter-spacing:1.5px">STEP 3 &middot; DAYS 60-90</div>
+      <div class="card-title" style="margin-top:6px;font-size:17px">Pilot LOI / MSA Outline</div>
+      <div class="card-text" style="font-size:13.5px">Term sheet for the Winter Park anchor. System-template MSA drafted in parallel. A credible path from this conversation to a signed program inside 90 days.</div>
+    </div>
+  </div>
+  <div style="margin-top:32px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
+    <div class="glass" style="padding:22px 32px;text-align:center;min-width:240px">
+      <div style="font-size:11px;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin-bottom:6px">CEO</div>
+      <div class="card-title" style="font-size:16px">David Perez</div>
+      <div class="card-text" style="font-size:12px">david@lumati.com</div>
+    </div>
+    <div class="glass" style="padding:22px 32px;text-align:center;min-width:240px">
+      <div style="font-size:11px;letter-spacing:2px;color:var(--purple);text-transform:uppercase;margin-bottom:6px">CSO</div>
+      <div class="card-title" style="font-size:16px">Sam Whiting</div>
+      <div class="card-text" style="font-size:12px">samuel@lumati.com</div>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:28px;font-style:italic;max-width:780px">
+    We'd love to host you in Encinitas. The team that built the program is the team that operates it &mdash; and the team that will build the next version of it with you.
+  </p>
+  <div class="slide-footer">
+    <img src="investment-deck/logo-color.png" alt="Lumati"/>
+    <span class="conf">Lumati Holdings, Inc. &middot; Confidential</span>
+    <span class="num">12 / 12</span>
+  </div>
+</section>
+
+<script>
+// Enable scroll-reveal animations only when JS is active (otherwise everything is visible by default)
+document.documentElement.classList.add('js-on');
+
+// Progress bar
+const prog = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const sc = window.scrollY;
+  const ht = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = ((sc / ht) * 100) + '%';
+});
+
+// Nav dots
+const slides = document.querySelectorAll('.slide');
+const navDots = document.getElementById('navDots');
+slides.forEach((slide, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'nav-dot';
+  dot.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }));
+  navDots.appendChild(dot);
+});
+const dots = document.querySelectorAll('.nav-dot');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const index = Array.from(slides).indexOf(entry.target);
+      dots.forEach(d => d.classList.remove('active'));
+      if (dots[index]) dots[index].classList.add('active');
+    }
+  });
+}, { threshold: 0.5 });
+slides.forEach(slide => observer.observe(slide));
+
+// Scroll animations
+const animEls = document.querySelectorAll('.anim');
+const animObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.2 });
+animEls.forEach(el => animObserver.observe(el));
+
+// Particles
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.2;
+    this.vy = (Math.random() - 0.5) * 0.2;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.opacity = Math.random() * 0.3 + 0.1;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(78,205,196,${this.opacity})`;
+    ctx.fill();
+  }
+}
+for (let i = 0; i < 50; i++) particles.push(new Particle());
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
