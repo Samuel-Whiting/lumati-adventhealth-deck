@@ -171,6 +171,28 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
   #s5 .card-title { font-size: 12pt !important; }
   #s5 .card-text { font-size: 9.5pt !important; }
   #s5 .mod-num { font-size: 18pt !important; min-width: 32px !important; }
+  /* S6 — aggressive tighten so both rows fit in 7.5in */
+  #s6 { padding: 32px 60px !important; }
+  #s6 h2 { font-size: 22pt !important; margin-bottom: 6px !important; }
+  #s6 .sub { font-size: 10pt !important; margin-bottom: 10px !important; max-width: 800px !important; }
+  #s6 .tag { margin-bottom: 8px !important; }
+  #s6 .grid-3 > .glass { padding: 0 !important; }
+  #s6 .grid-3 .pcard { aspect-ratio: 16/6 !important; }
+  #s6 .grid-3 > .glass > div:last-child { padding: 10px 14px !important; }
+  #s6 .grid-3 .badge { font-size: 8pt !important; padding: 2px 8px !important; margin-bottom: 4px !important; }
+  #s6 .grid-3 .card-title { font-size: 11.5pt !important; margin-bottom: 3px !important; }
+  #s6 .grid-3 .card-text { font-size: 9pt !important; line-height: 1.4 !important; }
+  #s6 .grid-3 .card-text + p { font-size: 8pt !important; margin-top: 4px !important; }
+  #s6 #s6-bottom { margin-top: 10px !important; gap: 16px !important; }
+  #s6 #s6-bottom .glass { padding: 9px 12px !important; }
+  #s6 #s6-bottom .pcard { width: 70px !important; min-width: 70px !important; }
+  #s6 #s6-bottom .card-title { font-size: 10.5pt !important; margin-bottom: 2px !important; }
+  #s6 #s6-bottom .card-text { font-size: 9pt !important; line-height: 1.35 !important; }
+  #s6 #s6-bottom .badge { font-size: 8pt !important; margin-bottom: 3px !important; padding: 2px 8px !important; }
+  /* S7 — phone mockups slightly larger + content room */
+  #s7 .glass { padding: 16px 20px !important; }
+  #s7 .card-title { font-size: 13pt !important; }
+  #s7 .card-text { font-size: 10pt !important; line-height: 1.5 !important; }
 }
 </style>
 </head>
@@ -332,7 +354,7 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
   </p>
   <div style="display:flex;gap:32px;max-width:1100px;width:100%;align-items:stretch">
     <div class="pcard" style="flex:1.1;min-height:380px;flex-shrink:0">
-      <img loading="lazy" src="investment-deck/img/crop/feed_portal_room.jpg" alt="Recharge Portal" style="object-position:center 40%"/>
+      <img loading="lazy" src="investment-deck/img/crop/lg10_bed_red.jpg" alt="LG10 Red Light Bed" style="object-position:center center"/>
       <div class="cap" style="padding:24px">
         <h3 style="font-size:18px">&ldquo;One 15-minute session. Five clinical modalities. A program patients will book, measure, and return for.&rdquo;</h3>
       </div>
@@ -412,25 +434,25 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
       </div>
     </div>
   </div>
-  <div class="grid-2" style="margin-top:18px">
-    <div class="glass" style="display:flex;gap:20px;align-items:center;overflow:hidden">
-      <div class="pcard" style="width:130px;min-width:130px;aspect-ratio:1/1;border-radius:12px;flex-shrink:0">
+  <div class="grid-2" id="s6-bottom" style="margin-top:14px">
+    <div class="glass" style="display:flex;gap:14px;align-items:center;overflow:hidden;padding:12px 16px">
+      <div class="pcard" style="width:86px;min-width:86px;aspect-ratio:1/1;border-radius:10px;flex-shrink:0">
         <img loading="lazy" src="investment-deck/img/crop/supp_stack.jpg" alt="Supplements"/>
       </div>
-      <div>
-        <div class="badge" style="background:rgba(255,107,107,.15);color:var(--coral)">RETAIL + CLINIC</div>
-        <div class="card-title">Lumati Hydrate Line</div>
-        <div class="card-text">Red, Green, Gold. Clinic dispense, retail extension, ecomm continuity after discharge. Recurring revenue layer for the program.</div>
+      <div style="flex:1">
+        <div class="badge" style="background:rgba(255,107,107,.15);color:var(--coral);margin-bottom:6px">RETAIL + CLINIC</div>
+        <div class="card-title" style="font-size:14px;margin-bottom:4px">Lumati Hydrate Line</div>
+        <div class="card-text" style="font-size:12.5px;line-height:1.45">Red, Green, Gold. Clinic dispense + retail extension + ecomm continuity. Recurring revenue layer.</div>
       </div>
     </div>
-    <div class="glass" style="display:flex;gap:20px;align-items:center;overflow:hidden">
-      <div class="pcard" style="width:130px;min-width:130px;aspect-ratio:1/1;border-radius:12px;flex-shrink:0">
+    <div class="glass" style="display:flex;gap:14px;align-items:center;overflow:hidden;padding:12px 16px">
+      <div class="pcard" style="width:86px;min-width:86px;aspect-ratio:1/1;border-radius:10px;flex-shrink:0">
         <img loading="lazy" src="investment-deck/img/crop/app_modalities_hd.png" alt="Education Layer"/>
       </div>
-      <div>
-        <div class="badge" style="background:rgba(78,205,196,.15);color:var(--teal)">PROGRAM</div>
-        <div class="card-title">Education Layer</div>
-        <div class="card-text">Staff certification, provider training, patient onboarding curriculum, ongoing content library. The program around the hardware.</div>
+      <div style="flex:1">
+        <div class="badge" style="background:rgba(78,205,196,.15);color:var(--teal);margin-bottom:6px">PROGRAM</div>
+        <div class="card-title" style="font-size:14px;margin-bottom:4px">Education Layer</div>
+        <div class="card-text" style="font-size:12.5px;line-height:1.45">Staff certification, provider training, patient onboarding curriculum, content library.</div>
       </div>
     </div>
   </div>
@@ -446,16 +468,16 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
   <div class="tag">The Lumati Platform</div>
   <h2 style="text-align:center;margin-bottom:8px">Beyond Hardware &mdash; <span class="grad-text">A Platform Patients And Staff Actually Use.</span></h2>
   <p class="sub">Integrated digital layer delivering personalized journeys, real-time analytics, and AI-driven patient engagement. Aligns with AdventHealth's inaugural Chief AI Officer mandate.</p>
-  <div style="display:flex;gap:32px;max-width:1100px;width:100%;align-items:stretch">
-    <div style="flex:.7;display:flex;gap:12px;align-items:center;justify-content:center">
-      <div style="width:120px;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);border:1px solid var(--border)">
-        <img loading="lazy" src="investment-deck/img/crop/phone_modalities.jpg" alt="Modalities"/>
+  <div style="display:flex;gap:32px;max-width:1100px;width:100%;align-items:center">
+    <div style="flex:.8;display:flex;gap:16px;align-items:center;justify-content:center">
+      <div style="width:140px;border-radius:22px;overflow:hidden;box-shadow:0 10px 44px rgba(0,0,0,.55),0 0 0 1px rgba(78,205,196,.08);border:1px solid rgba(255,255,255,.1);background:#0a0a12">
+        <img loading="lazy" src="investment-deck/img/crop/phone_modalities.jpg" alt="Modalities" style="display:block;width:100%;height:auto;object-fit:cover"/>
       </div>
-      <div style="width:120px;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);border:1px solid var(--border);margin-top:-24px">
-        <img loading="lazy" src="investment-deck/img/crop/phone_insights.png" alt="Insights"/>
+      <div style="width:140px;border-radius:22px;overflow:hidden;box-shadow:0 10px 44px rgba(0,0,0,.55),0 0 0 1px rgba(167,139,250,.08);border:1px solid rgba(255,255,255,.1);background:#0a0a12">
+        <img loading="lazy" src="investment-deck/img/crop/phone_insights.png" alt="Insights" style="display:block;width:100%;height:auto;object-fit:cover"/>
       </div>
-      <div style="width:120px;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.5);border:1px solid var(--border)">
-        <img loading="lazy" src="investment-deck/img/crop/phone_stack.png" alt="Stack"/>
+      <div style="width:140px;border-radius:22px;overflow:hidden;box-shadow:0 10px 44px rgba(0,0,0,.55),0 0 0 1px rgba(251,180,91,.08);border:1px solid rgba(255,255,255,.1);background:#0a0a12">
+        <img loading="lazy" src="investment-deck/img/crop/phone_stack.png" alt="Stack" style="display:block;width:100%;height:auto;object-fit:cover"/>
       </div>
     </div>
     <div style="flex:1;display:flex;flex-direction:column;gap:16px">
@@ -520,7 +542,7 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
   <div class="glass" style="max-width:1100px;margin-top:18px;text-align:center;border-color:rgba(167,139,250,.15);padding:18px 28px">
     <p style="font-size:14px;color:var(--dim)">
       <strong style="color:var(--bright)">Hyatt Global Approval</strong> across all properties with spa and fitness facilities. &nbsp;&middot;&nbsp;
-      <strong style="color:var(--bright)">Earned media:</strong> Fitt Insider, Spa Business, Longevity.Technology, Yahoo Finance.
+      <strong style="color:var(--bright)">Featured in:</strong> Longevity.Technology, Spa Business, San Diego Union-Tribune.
     </p>
   </div>
   <div class="quote-block center" style="text-align:center">
