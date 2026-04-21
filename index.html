@@ -80,6 +80,8 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
 .pcard img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.15) saturate(1.1);
   transition:filter .5s,transform .5s}
 .pcard:hover img{filter:brightness(.65) contrast(1.1) saturate(1.1);transform:scale(1.03)}
+#s8 .grid-3 .pcard img{filter:brightness(.88) contrast(1.05) saturate(1.08)}
+#s8 .grid-3 .pcard:hover img{filter:brightness(.95) contrast(1.05) saturate(1.1)}
 .pcard .cap{position:absolute;inset:0;
   background:linear-gradient(to top,rgba(6,6,10,.92) 0%,rgba(6,6,10,.2) 50%,transparent 100%);
   display:flex;flex-direction:column;justify-content:flex-end;padding:16px 18px}
@@ -196,6 +198,7 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
   /* S8 — keep content above the footer, tighten card aspect + padding */
   #s8 .grid-3 > .glass { padding: 0 !important; }
   #s8 .grid-3 .pcard { aspect-ratio: 16/8 !important; }
+  #s8 .grid-3 .pcard img { filter: brightness(.88) contrast(1.05) saturate(1.08) !important; }
   #s8 .grid-3 > .glass > div:last-child { padding: 14px 18px !important; }
   #s8 .grid-3 .card-title { font-size: 12.5pt !important; margin-bottom: 4px !important; }
   #s8 .grid-3 .card-text { font-size: 10pt !important; line-height: 1.45 !important; }
@@ -216,8 +219,12 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
     <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,6,10,.75) 0%,rgba(6,6,10,.55) 50%,rgba(6,6,10,.85) 100%)"></div>
   </div>
   <div style="text-align:center;max-width:960px;z-index:2;position:relative">
-    <img src="investment-deck/logo-color.png" alt="Lumati" class="anim" style="width:160px;margin-bottom:28px;filter:drop-shadow(0 0 16px rgba(78,205,196,.5))"/>
-    <div class="tag anim d1" style="margin-bottom:20px">Lumati Holdings &times; AdventHealth</div>
+    <div class="anim" style="display:flex;align-items:center;justify-content:center;gap:44px;margin-bottom:32px">
+      <img src="investment-deck/logo-color.png" alt="Lumati" style="width:150px;filter:drop-shadow(0 0 16px rgba(78,205,196,.5))"/>
+      <div style="width:1px;height:52px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.35),transparent)"></div>
+      <img src="investment-deck/img/adventhealth_logo_light.png" alt="AdventHealth" style="width:210px;filter:drop-shadow(0 0 16px rgba(255,255,255,.25))"/>
+    </div>
+    <div class="tag anim d1" style="margin-bottom:20px">A Partnership Proposal</div>
     <h1 class="anim d2" style="font-size:clamp(2.4rem,5vw,4rem);margin-bottom:16px">
       The Longevity Layer<br>
       <span class="grad-text">for AdventHealth.</span>
@@ -317,7 +324,7 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
       <div class="tag">Introducing Lumati</div>
       <h2 style="margin-bottom:16px">Next-Generation Longevity.<br><span class="grad-text">Built To Operate Inside Health Systems.</span></h2>
       <p style="font-size:15px;color:var(--dim);line-height:1.7;margin-bottom:20px">
-        Lumati Holdings, Inc. is a longevity and cellular-health company. Our hardware, protocols, and platform are operating today &mdash; clinically inside our Encinitas flagship, and commercially inside premium hospitality (Hyatt-approved, live at Alila Marea and La Valle Coastal Club).
+        Lumati Holdings, Inc. is a longevity and cellular-health company. Our hardware, protocols, and platform are operating today &mdash; clinically inside our Encinitas flagship, and commercially inside premium hospitality (Hyatt-approved at Alila Marea, plus La Valle Coastal Club).
       </p>
       <div class="glass" style="border-color:rgba(78,205,196,.2);padding:18px 22px;margin-bottom:16px">
         <p style="font-size:14px;color:var(--teal)">
@@ -530,7 +537,7 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
         <img loading="lazy" src="investment-deck/img/crop/resort_lavalle_wellness.jpg" alt="La Valle Coastal Club"/>
       </div>
       <div style="padding:18px 22px">
-        <div class="badge" style="background:rgba(78,205,196,.2);color:var(--teal)">LIVE &middot; HYATT</div>
+        <div class="badge" style="background:rgba(78,205,196,.2);color:var(--teal)">LIVE &middot; WELLNESS CLUB</div>
         <div class="card-title">La Valle Coastal Club</div>
         <div class="card-text">Premium longevity wellness center running the full Lumati suite. Our flagship hospitality deployment model.</div>
       </div>
@@ -692,7 +699,7 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
     </div>
     <div class="glass" style="padding:22px 32px;text-align:center;min-width:240px">
       <div style="font-size:11px;letter-spacing:2px;color:var(--purple);text-transform:uppercase;margin-bottom:6px">CSO</div>
-      <div class="card-title" style="font-size:16px">Sam Whiting</div>
+      <div class="card-title" style="font-size:16px">Samuel Whiting</div>
       <div class="card-text" style="font-size:12px">samuel@lumati.com</div>
     </div>
   </div>
