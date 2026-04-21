@@ -193,6 +193,13 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
   #s7 .glass { padding: 16px 20px !important; }
   #s7 .card-title { font-size: 13pt !important; }
   #s7 .card-text { font-size: 10pt !important; line-height: 1.5 !important; }
+  /* S8 — keep content above the footer, tighten card aspect + padding */
+  #s8 .grid-3 > .glass { padding: 0 !important; }
+  #s8 .grid-3 .pcard { aspect-ratio: 16/8 !important; }
+  #s8 .grid-3 > .glass > div:last-child { padding: 14px 18px !important; }
+  #s8 .grid-3 .card-title { font-size: 12.5pt !important; margin-bottom: 4px !important; }
+  #s8 .grid-3 .card-text { font-size: 10pt !important; line-height: 1.45 !important; }
+  #s8 .grid-3 .badge { font-size: 8.5pt !important; margin-bottom: 6px !important; }
 }
 </style>
 </head>
@@ -539,14 +546,11 @@ html.js-on .anim.visible{opacity:1;transform:translateY(0)}
       </div>
     </div>
   </div>
-  <div class="glass" style="max-width:1100px;margin-top:18px;text-align:center;border-color:rgba(167,139,250,.15);padding:18px 28px">
-    <p style="font-size:14px;color:var(--dim)">
+  <div class="glass" style="max-width:1100px;margin-top:20px;text-align:center;border-color:rgba(167,139,250,.15);padding:20px 32px">
+    <p style="font-size:14px;color:var(--dim);line-height:1.6">
       <strong style="color:var(--bright)">Hyatt Global Approval</strong> across all properties with spa and fitness facilities. &nbsp;&middot;&nbsp;
-      <strong style="color:var(--bright)">Featured in:</strong> Longevity.Technology, Spa Business, San Diego Union-Tribune.
+      <strong style="color:var(--bright)">Featured in:</strong> Longevity.Technology &middot; Spa Business &middot; San Diego Union-Tribune.
     </p>
-  </div>
-  <div class="quote-block center" style="text-align:center">
-    The question is not whether the technology works. The question is<br><strong style="color:var(--bright)">how fast we can bring it inside AdventHealth.</strong>
   </div>
   <div class="slide-footer">
     <img src="investment-deck/logo-color.png" alt="Lumati"/>
